@@ -21,6 +21,7 @@
 		D03F63D525E07DA100CA8BF2 /* NSPersistentContainer_loadContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F63D425E07DA100CA8BF2 /* NSPersistentContainer_loadContainerTests.swift */; };
 		D03F63E025E07E1400CA8BF2 /* CDTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03F63DE25E07E1400CA8BF2 /* CDTestModel.xcdatamodeld */; };
 		D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F63E625E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift */; };
+		D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */; };
 		D09A681E25DFAADE00EDF0D5 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		D03F63D425E07DA100CA8BF2 /* NSPersistentContainer_loadContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentContainer_loadContainerTests.swift; sourceTree = "<group>"; };
 		D03F63DF25E07E1400CA8BF2 /* CDTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDTestModel.xcdatamodel; sourceTree = "<group>"; };
 		D03F63E625E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+loadContainer.swift"; sourceTree = "<group>"; };
+		D03F640F25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDFeedStore.xcdatamodel; sourceTree = "<group>"; };
 		D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,9 +149,18 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		D03F640D25E09FDA00CA8BF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D09A681C25DFAAC200EDF0D5 /* CoreDataFeedStore */ = {
 			isa = PBXGroup;
 			children = (
+				D03F640D25E09FDA00CA8BF2 /* Model */,
 				D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */,
 			);
 			path = CoreDataFeedStore;
@@ -269,6 +280,7 @@
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 				D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */,
+				D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +570,16 @@
 			);
 			currentVersion = D03F63DF25E07E1400CA8BF2 /* CDTestModel.xcdatamodel */;
 			path = CDTestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D03F640F25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodel */,
+			);
+			currentVersion = D03F640F25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodel */;
+			path = CDFeedStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
