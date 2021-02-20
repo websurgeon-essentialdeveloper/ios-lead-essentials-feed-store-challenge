@@ -10,11 +10,11 @@ extension Optional {
 	    inFile file: StaticString = #filePath,
 		atLine line: UInt = #line
 	) throws -> Wrapped {
-		guard let unrwapped = self else {
+		guard let unwrapped = self else {
 			throw errorExpression() ?? UnwrapOptionalError(inFile: file, atLine: line)
 		}
 		
-		return unrwapped
+		return unwrapped
 	}
 }
 
