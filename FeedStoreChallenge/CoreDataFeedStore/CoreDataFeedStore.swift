@@ -52,7 +52,7 @@ public class CoreDataFeedStore: FeedStore {
 			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: self.context)
 			
 			do {
-				let cache = CDFeedCache(context: self.context)
+				let cache = try self.context.find(CDFeedCache.self)?.first ?? CDFeedCache(context: self.context)
 				cache.timestamp = timestamp
 
 				let images: [CDFeedImage] = feed.map(toCDFeedImage)
