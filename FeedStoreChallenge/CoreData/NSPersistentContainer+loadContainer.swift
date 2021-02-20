@@ -6,15 +6,39 @@ import Foundation
 import CoreData
 
 extension NSPersistentContainer {
+	public typealias StoreLoadFailure = (store: NSPersistentStoreDescription, error: Error)
+	public typealias StoreLoadResult = (store: NSPersistentStoreDescription, error: Error?)
+	public typealias LoadedStoresCompletion = ([StoreLoadResult]) -> Void
+	
 	public enum LoadError: Error {
-		case modelNotFound(URL)
-		case loadPersistentStoreFailed(Error)
+		case modelNotFound(URL?)
+		case loadPersistentStoresFailed([StoreLoadFailure])
 	}
 	
-	public static func loadContainer(name: String, modelURL: URL, storeURL: URL) throws -> NSPersistentContainer {
-		guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-			throw LoadError.modelNotFound(modelURL)
-		}
+	public static func loadContainer(
+		name: String, modelURL: URL, storeURL: URL,
+		loadedStores: LoadedStoresCompletion? = nil
+	) throws -> NSPersistentContainer {
+		let container = createPersistentContainer(
+			with: name,
+			   at: storeURL,
+			   using: try loadModel(from: modelURL))
+		
+		try loadPersistentStore(for: container, completion: loadedStores)
+
+		return container
+	}
+	
+	private static func loadModel(from modelURL: URL) throws -> NSManagedObjectModel {
+		return try NSManagedObjectModel(contentsOf: modelURL)
+			.unwrap(throw: LoadError.modelNotFound(modelURL))
+	}
+	
+	private static func createPersistentContainer(
+		with name: String,
+		at storeURL: URL,
+		using model: NSManagedObjectModel
+	) -> NSPersistentContainer {
 		
 		let container = NSPersistentContainer(
 			name: name,
@@ -22,14 +46,20 @@ extension NSPersistentContainer {
 		
 		let description = NSPersistentStoreDescription(url: storeURL)
 		container.persistentStoreDescriptions = [description]
-			
-		var err: Swift.Error?
-		container.loadPersistentStores { (_, error) in
-			err = error
+		
+		return container
+	}
+	
+	private static func loadPersistentStore(
+		for container: NSPersistentContainer,
+		completion: (([(NSPersistentStoreDescription, Error?)]) -> Void)? = nil
+	) throws {
+		var loaded: [(NSPersistentStoreDescription, Swift.Error?)] = []
+		
+		container.loadPersistentStores { (store, error) in
+			loaded.append((store, error))
 		}
 		
-		try err.map { throw LoadError.loadPersistentStoreFailed($0) }
-
-		return container
+		completion?(loaded)
 	}
 }

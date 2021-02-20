@@ -14,10 +14,24 @@ class NSPersistentContainer_loadContainerTests: XCTestCase {
 		.temporaryDirectory
 		.appendingPathComponent(String(describing: NSPersistentContainer_loadContainerTests.self))
 
+	private typealias SUTError = NSPersistentContainer.LoadError
+	
 	override func tearDown() {
 		super.tearDown()
 		
 		XCTAssertNoThrow(try removeTestDirectory())
+	}
+	
+	func test_loadContainer_invalidModelUrl_throwsError() throws {
+		let modelURL = URL(string: "file://invalid-url")!
+
+		XCTAssertThrowsError(try loadContainer(modelURL: modelURL)) { error in
+			switch error as? SUTError {
+			case let .modelNotFound(url):
+				XCTAssertEqual(url, modelURL)
+			default: XCTFail("expected modelNotFoundError, got \(error)")
+			}
+		}
 	}
 	
 	func test_loadContainer_validModelUrl_returnsContainer() throws {
