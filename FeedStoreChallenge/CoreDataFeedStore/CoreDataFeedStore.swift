@@ -94,16 +94,6 @@ extension NSManagedObject {
 		return entity().name!
 	}
 }
-
-extension NSManagedObjectContext {
-
-	func find<T: NSManagedObject>(_ type: T.Type) throws -> [T]? {
-		let request = NSFetchRequest<T>(entityName: T.entityName())
-				
-		return try? fetch(request)
-	}
-}
-
 extension CDFeedImage {
 	fileprivate func toLocalFeedImage() -> LocalFeedImage? {
 		guard let id = id, let url = url else { return nil }
