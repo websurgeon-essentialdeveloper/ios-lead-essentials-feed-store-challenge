@@ -93,10 +93,27 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
 	// - MARK: Helpers
 	
-	private func makeSUT() throws -> FeedStore {
-		return CoreDataFeedStore()
+	private func makeSUT(
+		file: StaticString = #filePath, line: UInt = #line
+	) throws -> FeedStore {
+		
+		return try CoreDataFeedStore(
+			name: storeNameForTests(),
+			modelURL: CDFeedStoreModel.modelURL(),
+			storeURL: inMemoryStoreURL()
+		) { loaded in
+			XCTAssertEqual(loaded.count, 1, file: file, line: line)
+			XCTAssertNil(loaded.first?.error, file: file, line: line)
+		}
 	}
 	
+	private func storeNameForTests() -> String {
+		return "\(CDFeedStoreModel.name)Testing"
+	}
+	
+	private func inMemoryStoreURL() -> URL {
+		return URL(fileURLWithPath: "/dev/null")
+	}
 }
 
 //  ***********************

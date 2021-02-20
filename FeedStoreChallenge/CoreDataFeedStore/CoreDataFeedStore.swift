@@ -3,10 +3,38 @@
 //
 
 import Foundation
+import CoreData
 
 public class CoreDataFeedStore: FeedStore {
+	public typealias Model = CDFeedStoreModel
+	public typealias LoadedStoresCompletion = NSPersistentContainer.LoadedStoresCompletion
 	
-	public init() {}
+	private let container: NSPersistentContainer
+	
+	public enum Error: Swift.Error {
+		case invalidModelURL
+		case invalidStoreURL
+		case modelNotFound(URL)
+		case loadPersistentStoresFailed([NSPersistentContainer.StoreLoadFailure])
+		case unhandled(Swift.Error?)
+	}
+
+	public init(
+		name: String = Model.name,
+		modelURL: URL? = Model.modelURL(),
+		storeURL: URL? = Model.storeURL(),
+		loadedStores: LoadedStoresCompletion? = nil
+	) throws {
+		do {
+			container = try NSPersistentContainer.loadContainer(
+				name: name,
+				modelURL: try modelURL.unwrap(throw: Error.invalidModelURL),
+				storeURL: try storeURL.unwrap(throw: Error.invalidStoreURL),
+				loadedStores: loadedStores)
+		} catch {
+			throw Self.transformError(error)
+		}
+	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
 		
@@ -22,5 +50,13 @@ public class CoreDataFeedStore: FeedStore {
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
 		completion(.empty)
+	}
+	
+	private static func transformError(_ anyError: Swift.Error) -> Error {
+		if let error = anyError as? Error {
+			return error
+		} else {
+			return Error.unhandled(anyError)
+		}
 	}
 }
