@@ -22,6 +22,8 @@
 		D03F63E025E07E1400CA8BF2 /* CDTestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03F63DE25E07E1400CA8BF2 /* CDTestModel.xcdatamodeld */; };
 		D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F63E625E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift */; };
 		D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */; };
+		D03F641525E10C9400CA8BF2 /* Optional+unwrapThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F641425E10C9400CA8BF2 /* Optional+unwrapThrow.swift */; };
+		D03F641C25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F641B25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift */; };
 		D09A681E25DFAADE00EDF0D5 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		D03F63DF25E07E1400CA8BF2 /* CDTestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDTestModel.xcdatamodel; sourceTree = "<group>"; };
 		D03F63E625E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentContainer+loadContainer.swift"; sourceTree = "<group>"; };
 		D03F640F25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDFeedStore.xcdatamodel; sourceTree = "<group>"; };
+		D03F641425E10C9400CA8BF2 /* Optional+unwrapThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+unwrapThrow.swift"; sourceTree = "<group>"; };
+		D03F641B25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+unwrapThrowTests.swift"; sourceTree = "<group>"; };
 		D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +102,7 @@
 		08CE2B8D2285BBD100183A1B /* FeedStoreChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				D03F641325E10C1800CA8BF2 /* Swift */,
 				D03F63E525E07E8200CA8BF2 /* CoreData */,
 				D09A681C25DFAAC200EDF0D5 /* CoreDataFeedStore */,
 				08CE2BA72285BCC600183A1B /* LocalFeedImage.swift */,
@@ -110,6 +115,7 @@
 		08CE2B982285BBD100183A1B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D03F641A25E10E7600CA8BF2 /* Swift */,
 				D03F63D325E07D8200CA8BF2 /* CoreData */,
 				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
 				08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */,
@@ -155,6 +161,22 @@
 				D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D03F641325E10C1800CA8BF2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				D03F641425E10C9400CA8BF2 /* Optional+unwrapThrow.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		D03F641A25E10E7600CA8BF2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				D03F641B25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 		D09A681C25DFAAC200EDF0D5 /* CoreDataFeedStore */ = {
@@ -281,6 +303,7 @@
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 				D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */,
 				D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */,
+				D03F641525E10C9400CA8BF2 /* Optional+unwrapThrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +315,7 @@
 				08CE2BB02285BCE700183A1B /* FeedStoreSpecs.swift in Sources */,
 				084BB13C24FE50A10091C705 /* FeedStoreIntegrationTests.swift in Sources */,
 				D03F63D525E07DA100CA8BF2 /* NSPersistentContainer_loadContainerTests.swift in Sources */,
+				D03F641C25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift in Sources */,
 				D03F63E025E07E1400CA8BF2 /* CDTestModel.xcdatamodeld in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
