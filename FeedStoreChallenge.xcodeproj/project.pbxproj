@@ -29,6 +29,7 @@
 		D0E6C78925E1587A003D702E /* NSManagedObjectContext+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */; };
 		D0E6C78D25E158DA003D702E /* NSManagedObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */; };
 		D0E6C79125E15CA4003D702E /* CDFeedImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C79025E15CA4003D702E /* CDFeedImage+Helpers.swift */; };
+		D0E6C79725E17886003D702E /* XCTestCase+trackForMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C79625E17886003D702E /* XCTestCase+trackForMemoryLeaks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Helpers.swift"; sourceTree = "<group>"; };
 		D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Helpers.swift"; sourceTree = "<group>"; };
 		D0E6C79025E15CA4003D702E /* CDFeedImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeedImage+Helpers.swift"; sourceTree = "<group>"; };
+		D0E6C79625E17886003D702E /* XCTestCase+trackForMemoryLeaks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+trackForMemoryLeaks.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
 				08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */,
 				084BB13B24FE50A10091C705 /* FeedStoreIntegrationTests.swift */,
+				D0E6C79625E17886003D702E /* XCTestCase+trackForMemoryLeaks.swift */,
 				08CE2B9B2285BBD100183A1B /* Info.plist */,
 			);
 			path = Tests;
@@ -341,6 +344,7 @@
 				D03F63D525E07DA100CA8BF2 /* NSPersistentContainer_loadContainerTests.swift in Sources */,
 				D03F641C25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift in Sources */,
 				D03F63E025E07E1400CA8BF2 /* CDTestModel.xcdatamodeld in Sources */,
+				D0E6C79725E17886003D702E /* XCTestCase+trackForMemoryLeaks.swift in Sources */,
 				08CE2BB12285BCE700183A1B /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				08CE2BAF2285BCE700183A1B /* XCTestCase+FeedStoreSpecs.swift in Sources */,
 				08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
