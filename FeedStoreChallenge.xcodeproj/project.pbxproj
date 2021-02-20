@@ -25,6 +25,7 @@
 		D03F641525E10C9400CA8BF2 /* Optional+unwrapThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F641425E10C9400CA8BF2 /* Optional+unwrapThrow.swift */; };
 		D03F641C25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F641B25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift */; };
 		D09A681E25DFAADE00EDF0D5 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */; };
+		D0E6C77725E13B19003D702E /* CDFeedStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		D03F641425E10C9400CA8BF2 /* Optional+unwrapThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+unwrapThrow.swift"; sourceTree = "<group>"; };
 		D03F641B25E10EF000CA8BF2 /* Optional+unwrapThrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+unwrapThrowTests.swift"; sourceTree = "<group>"; };
 		D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
+		D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFeedStoreModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		08CE2B982285BBD100183A1B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D0E6C77C25E13B3A003D702E /* CoreDataFeedStore */,
 				D03F641A25E10E7600CA8BF2 /* Swift */,
 				D03F63D325E07D8200CA8BF2 /* CoreData */,
 				08CE2BA92285BCE700183A1B /* FeedStoreSpecs */,
@@ -158,6 +161,7 @@
 		D03F640D25E09FDA00CA8BF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */,
 				D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */,
 			);
 			path = Model;
@@ -184,6 +188,13 @@
 			children = (
 				D03F640D25E09FDA00CA8BF2 /* Model */,
 				D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */,
+			);
+			path = CoreDataFeedStore;
+			sourceTree = "<group>";
+		};
+		D0E6C77C25E13B3A003D702E /* CoreDataFeedStore */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = CoreDataFeedStore;
 			sourceTree = "<group>";
@@ -303,6 +314,7 @@
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 				D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */,
 				D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */,
+				D0E6C77725E13B19003D702E /* CDFeedStoreModel.swift in Sources */,
 				D03F641525E10C9400CA8BF2 /* Optional+unwrapThrow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
