@@ -40,7 +40,9 @@ public class CoreDataFeedStore: FeedStore {
 	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		
+		context.perform {
+			completion(nil)
+		}
 	}
 	
 	public func insert(
