@@ -27,6 +27,7 @@
 		D09A681E25DFAADE00EDF0D5 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */; };
 		D0E6C77725E13B19003D702E /* CDFeedStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */; };
 		D0E6C78925E1587A003D702E /* NSManagedObjectContext+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */; };
+		D0E6C78D25E158DA003D702E /* NSManagedObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D09A681D25DFAADE00EDF0D5 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFeedStoreModel.swift; sourceTree = "<group>"; };
 		D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Helpers.swift"; sourceTree = "<group>"; };
+		D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				D03F63E625E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift */,
 				D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */,
+				D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */,
 				D0E6C77725E13B19003D702E /* CDFeedStoreModel.swift in Sources */,
 				D03F641525E10C9400CA8BF2 /* Optional+unwrapThrow.swift in Sources */,
+				D0E6C78D25E158DA003D702E /* NSManagedObject+Helpers.swift in Sources */,
 				D0E6C78925E1587A003D702E /* NSManagedObjectContext+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -89,11 +89,6 @@ public class CoreDataFeedStore: FeedStore {
 	}
 }
 
-extension NSManagedObject {
-	static func entityName() -> String {
-		return entity().name!
-	}
-}
 extension CDFeedImage {
 	fileprivate func toLocalFeedImage() -> LocalFeedImage? {
 		guard let id = id, let url = url else { return nil }
