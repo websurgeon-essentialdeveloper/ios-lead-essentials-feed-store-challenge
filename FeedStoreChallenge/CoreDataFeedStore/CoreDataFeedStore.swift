@@ -52,7 +52,7 @@ public class CoreDataFeedStore: FeedStore {
 			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: self.context)
 			
 			do {
-				let cache = try self.context.find(CDFeedCache.self)?.first ?? CDFeedCache(context: self.context)
+				let cache = try self.context.findOneOrCreate(CDFeedCache.self)
 				cache.timestamp = timestamp
 
 				let images: [CDFeedImage] = feed.map(toCDFeedImage)
@@ -70,7 +70,7 @@ public class CoreDataFeedStore: FeedStore {
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
 		context.perform {
-			if let cache = try? self.context.find(CDFeedCache.self)?.first,
+			if let cache = try? self.context.findOne(CDFeedCache.self),
 			   let images = cache.images {
 				let feed = images
 					.compactMap { ($0 as? CDFeedImage)?.toLocalFeedImage() }

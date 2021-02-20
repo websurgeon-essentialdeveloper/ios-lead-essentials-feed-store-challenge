@@ -7,9 +7,18 @@ import CoreData
 
 extension NSManagedObjectContext {
 
-	func find<T: NSManagedObject>(_ type: T.Type) throws -> [T]? {
+	func findOne<T: NSManagedObject>(_ type: T.Type, create: Bool = false) throws -> T? {
 		let request = NSFetchRequest<T>(entityName: T.entityName())
 				
-		return try? fetch(request)
+		if let cache = try fetch(request).first {
+			return cache
+		} else {
+			return create ? T(context: self) : nil
+		}
+
+	}
+	
+	func findOneOrCreate<T: NSManagedObject>(_ type: T.Type) throws -> T {
+		return try findOne(type, create: true).unwrap()
 	}
 }
