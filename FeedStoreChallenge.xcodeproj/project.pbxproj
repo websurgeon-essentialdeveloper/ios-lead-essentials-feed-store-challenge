@@ -28,6 +28,7 @@
 		D0E6C77725E13B19003D702E /* CDFeedStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */; };
 		D0E6C78925E1587A003D702E /* NSManagedObjectContext+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */; };
 		D0E6C78D25E158DA003D702E /* NSManagedObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */; };
+		D0E6C79125E15CA4003D702E /* CDFeedImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6C79025E15CA4003D702E /* CDFeedImage+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFeedStoreModel.swift; sourceTree = "<group>"; };
 		D0E6C78825E1587A003D702E /* NSManagedObjectContext+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Helpers.swift"; sourceTree = "<group>"; };
 		D0E6C78C25E158DA003D702E /* NSManagedObject+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Helpers.swift"; sourceTree = "<group>"; };
+		D0E6C79025E15CA4003D702E /* CDFeedImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeedImage+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				D0E6C77625E13B19003D702E /* CDFeedStoreModel.swift */,
 				D03F640E25E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld */,
+				D0E6C79025E15CA4003D702E /* CDFeedImage+Helpers.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				D09A681E25DFAADE00EDF0D5 /* CoreDataFeedStore.swift in Sources */,
 				08CE2BA62285BCB600183A1B /* FeedStore.swift in Sources */,
+				D0E6C79125E15CA4003D702E /* CDFeedImage+Helpers.swift in Sources */,
 				08CE2BA82285BCC600183A1B /* LocalFeedImage.swift in Sources */,
 				D03F63E725E07E9400CA8BF2 /* NSPersistentContainer+loadContainer.swift in Sources */,
 				D03F641025E09FEB00CA8BF2 /* CDFeedStore.xcdatamodeld in Sources */,

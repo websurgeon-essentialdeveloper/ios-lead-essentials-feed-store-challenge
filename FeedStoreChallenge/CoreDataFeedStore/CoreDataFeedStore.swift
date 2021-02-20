@@ -49,11 +49,13 @@ public class CoreDataFeedStore: FeedStore {
 		completion: @escaping InsertionCompletion
 	) {
 		context.perform {
+			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: self.context)
+			
 			do {
 				let cache = CDFeedCache(context: self.context)
 				cache.timestamp = timestamp
 
-				let images: [CDFeedImage] = feed.map { $0.toCDFeedImage(in: self.context) }
+				let images: [CDFeedImage] = feed.map(toCDFeedImage)
 
 				cache.images = NSOrderedSet(array: images)
 
@@ -89,25 +91,3 @@ public class CoreDataFeedStore: FeedStore {
 	}
 }
 
-extension CDFeedImage {
-	fileprivate func toLocalFeedImage() -> LocalFeedImage? {
-		guard let id = id, let url = url else { return nil }
-		
-		return LocalFeedImage(
-			id: id,
-			description: imageDescription,
-			location: location,
-			url: url)
-	}
-}
-
-extension LocalFeedImage {
-	fileprivate func toCDFeedImage(in context: NSManagedObjectContext) -> CDFeedImage {
-		let image = CDFeedImage(context: context)
-		image.id = id
-		image.imageDescription = description
-		image.url = url
-		image.location = location
-		return image
-	}
-}
