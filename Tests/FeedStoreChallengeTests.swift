@@ -96,8 +96,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	private func makeSUT(
 		file: StaticString = #filePath, line: UInt = #line
 	) throws -> FeedStore {
-		
-		return try CoreDataFeedStore(
+		let sut = try CoreDataFeedStore(
 			name: storeNameForTests(),
 			modelURL: CDFeedStoreModel.modelURL(),
 			storeURL: inMemoryStoreURL()
@@ -105,6 +104,10 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 			XCTAssertEqual(loaded.count, 1, file: file, line: line)
 			XCTAssertNil(loaded.first?.error, file: file, line: line)
 		}
+		
+		trackForMemoryLeaks(sut)
+
+		return sut
 	}
 	
 	private func storeNameForTests() -> String {
