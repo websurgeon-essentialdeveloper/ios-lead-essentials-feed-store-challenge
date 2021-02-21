@@ -40,13 +40,17 @@ public class CoreDataFeedStore: FeedStore {
 	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		context.perform {
-			if let cache = try? self.context.findOne(CDFeedCache.self) {
-				self.context.delete(cache)
-				try? self.context.save()
-				completion(nil)
-			} else {
-				completion(nil)
+		perform(in: context) { context in
+			do {
+				if let cache = try context.findOne(CDFeedCache.self) {
+					context.delete(cache)
+					try? context.save()
+					completion(nil)
+				} else {
+					completion(nil)
+				}
+			} catch {
+				completion(error)
 			}
 		}
 	}
@@ -56,18 +60,18 @@ public class CoreDataFeedStore: FeedStore {
 		timestamp: Date,
 		completion: @escaping InsertionCompletion
 	) {
-		context.perform {
-			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: self.context)
+		perform(in: context) { context in
+			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: context)
 			
 			do {
-				let cache = try self.context.findOneOrCreate(CDFeedCache.self)
+				let cache = try context.findOneOrCreate(CDFeedCache.self)
 				cache.timestamp = timestamp
 
 				let images: [CDFeedImage] = feed.map(toCDFeedImage)
 
 				cache.images = NSOrderedSet(array: images)
 
-				try self.context.save()
+				try context.save()
 				completion(nil)
 			} catch {
 				completion(error)
@@ -77,15 +81,19 @@ public class CoreDataFeedStore: FeedStore {
 	}
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
-		context.perform {
-			if let cache = try? self.context.findOne(CDFeedCache.self),
-			   let images = cache.images {
-				let feed = images
-					.compactMap { ($0 as? CDFeedImage)?.toLocalFeedImage() }
-				
-				completion(.found(feed: feed, timestamp: cache.timestamp!))
-			} else {
-				completion(.empty)
+		perform(in: context) { context in
+			do {
+				if let cache = try context.findOne(CDFeedCache.self),
+				   let images = cache.images {
+					let feed = images
+						.compactMap { ($0 as? CDFeedImage)?.toLocalFeedImage() }
+					
+					completion(.found(feed: feed, timestamp: cache.timestamp!))
+				} else {
+					completion(.empty)
+				}
+			} catch {
+				completion(.failure(error))
 			}
 		}
 	}
@@ -96,6 +104,13 @@ public class CoreDataFeedStore: FeedStore {
 		} else {
 			return Error.unhandled(anyError)
 		}
+	}
+	
+	func perform(
+		in context: NSManagedObjectContext,
+		_ block: @escaping (NSManagedObjectContext) -> Void
+	) {
+		context.perform { block(context) }
 	}
 }
 
