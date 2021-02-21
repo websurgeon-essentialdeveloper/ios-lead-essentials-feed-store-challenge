@@ -100,6 +100,13 @@ public class CoreDataFeedStore: FeedStore {
 	private static func transformError(_ anyError: Swift.Error) -> Error {
 		if let error = anyError as? Error {
 			return error
+		} else if let error = anyError as? NSPersistentContainer.LoadError {
+			switch error {
+			case let .modelNotFound(url):
+				return Error.modelNotFound(url)
+			case let.loadPersistentStoresFailed(failures):
+				return Error.loadPersistentStoresFailed(failures)
+			}
 		} else {
 			return Error.unhandled(anyError)
 		}

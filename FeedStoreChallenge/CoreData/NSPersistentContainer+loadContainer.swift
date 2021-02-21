@@ -11,7 +11,7 @@ extension NSPersistentContainer {
 	public typealias LoadedStoresCompletion = ([StoreLoadResult]) -> Void
 	
 	public enum LoadError: Error {
-		case modelNotFound(URL?)
+		case modelNotFound(URL)
 		case loadPersistentStoresFailed([StoreLoadFailure])
 	}
 	
