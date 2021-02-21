@@ -27,9 +27,9 @@ class FeedStoreIntegrationTests: XCTestCase {
 	}
 	
 	func test_retrieve_deliversEmptyOnEmptyCache() throws {
-//		let sut = try makeSUT()
-//
-//		expect(sut, toRetrieve: .empty)
+		let sut = try makeSUT()
+
+		expect(sut, toRetrieve: .empty)
 	}
 	
 	func test_retrieve_deliversFeedInsertedOnAnotherInstance() throws {
@@ -71,16 +71,51 @@ class FeedStoreIntegrationTests: XCTestCase {
 	
 	// - MARK: Helpers
 	
-	private func makeSUT() throws -> FeedStore {
-		fatalError("Must be implemented")
+	private func makeSUT(
+		file: StaticString = #filePath, line: UInt = #line
+	) throws -> FeedStore {
+		let sut = try CoreDataFeedStore(
+			name: storeName(),
+			modelURL: CDFeedStoreModel.modelURL(),
+			storeURL: storeURL(name: storeName())
+		) { loaded in
+			XCTAssertEqual(loaded.count, 1, file: file, line: line)
+			XCTAssertNil(loaded.first?.error, file: file, line: line)
+		}
+		
+		trackForMemoryLeaks(sut)
+
+		return sut
 	}
 	
 	private func setupEmptyStoreState() throws {
-		
+		try clearArtifactsDirectory()
 	}
 	
 	private func undoStoreSideEffects() throws {
-		
+		try clearArtifactsDirectory()
+	}
+	
+	private func clearArtifactsDirectory() throws {
+		if FileManager.default.fileExists(atPath: artifactsDirectory().path) {
+			try FileManager.default.removeItem(at: artifactsDirectory())
+		}
+	}
+	
+	private func artifactsDirectory() -> URL {
+		return FileManager.default
+			.urls(for: .cachesDirectory, in: .userDomainMask)
+			.first!
+			.appendingPathComponent("\(FeedStoreIntegrationTests.self)")
+	}
+
+	private func storeName() -> String {
+		return "\(FeedStoreIntegrationTests.self)Store"
+	}
+	
+	private func storeURL(name: String) -> URL {
+		return artifactsDirectory()
+			.appendingPathComponent(name)
 	}
 	
 }
