@@ -50,7 +50,7 @@ public class CoreDataFeedStore: FeedStore {
 					completion(nil)
 				}
 			} catch {
-				completion(error)
+				completion(Self.transformError(error))
 			}
 		}
 	}
@@ -74,10 +74,9 @@ public class CoreDataFeedStore: FeedStore {
 				try context.save()
 				completion(nil)
 			} catch {
-				completion(error)
+				completion(Self.transformError(error))
 			}
 		}
-
 	}
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
@@ -93,7 +92,7 @@ public class CoreDataFeedStore: FeedStore {
 					completion(.empty)
 				}
 			} catch {
-				completion(.failure(error))
+				completion(.failure(Self.transformError(error)))
 			}
 		}
 	}
