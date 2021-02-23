@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import CoreData
 
 public enum CDFeedStoreModel {
 	public static let name = "CDFeedStore"
@@ -15,9 +16,8 @@ public enum CDFeedStoreModel {
 	}
 	
 	public static func storeURL() -> URL? {
-		return FileManager.default
-			.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-			.first?
+		return NSPersistentContainer
+			.defaultDirectoryURL()
 			.appendingPathComponent(name)
 			.appendingPathExtension(storeExtension)
 	}
