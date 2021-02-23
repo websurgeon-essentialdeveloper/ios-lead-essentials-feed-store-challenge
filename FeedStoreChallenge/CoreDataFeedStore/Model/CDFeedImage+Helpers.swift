@@ -7,8 +7,6 @@ import CoreData
 
 extension CDFeedImage {
 	func toLocalFeedImage() -> LocalFeedImage? {
-		guard let id = id, let url = url else { return nil }
-		
 		return LocalFeedImage(
 			id: id,
 			description: imageDescription,

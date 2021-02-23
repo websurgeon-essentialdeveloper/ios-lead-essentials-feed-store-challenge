@@ -82,7 +82,7 @@ public class CoreDataFeedStore: FeedStore {
 					let feed = images
 						.compactMap { ($0 as? CDFeedImage)?.toLocalFeedImage() }
 					
-					completion(.found(feed: feed, timestamp: cache.timestamp!))
+					completion(.found(feed: feed, timestamp: cache.timestamp))
 				} else {
 					completion(.empty)
 				}
