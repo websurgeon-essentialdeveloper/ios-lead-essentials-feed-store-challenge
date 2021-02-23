@@ -7,8 +7,8 @@ import CoreData
 
 public enum CDFeedStoreModel {
 	public static let name = "CDFeedStore"
-	public static let modelExtension = "momd"
-	public static let storeExtension = "sqlite"
+	private static let modelExtension = "momd"
+	private static let storeExtension = "sqlite"
 
 	public static func modelURL() -> URL? {
 		return Bundle(for: CDFeedImage.self)
