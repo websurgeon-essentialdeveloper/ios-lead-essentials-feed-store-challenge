@@ -75,8 +75,6 @@ class FeedStoreIntegrationTests: XCTestCase {
 		file: StaticString = #filePath, line: UInt = #line
 	) throws -> FeedStore {
 		let sut = try CoreDataFeedStore(
-			name: storeName(),
-			modelURL: CDFeedStoreModel.modelURL(),
 			storeURL: storeURL(name: storeName())
 		) { loaded in
 			XCTAssertEqual(loaded.count, 1, file: file, line: line)

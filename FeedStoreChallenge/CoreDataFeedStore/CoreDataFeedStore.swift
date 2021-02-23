@@ -20,15 +20,13 @@ public class CoreDataFeedStore: FeedStore {
 	}
 
 	public init(
-		name: String = Model.name,
-		modelURL: URL? = Model.modelURL(),
 		storeURL: URL = Model.storeURL(),
 		loadedStores: LoadedStoresCompletion? = nil
 	) throws {
 		do {
 			container = try NSPersistentContainer.loadContainer(
-				name: name,
-				modelURL: try modelURL.unwrap(throw: Error.invalidModelURL),
+				name: Model.name,
+				modelURL: try Model.modelURL().unwrap(throw: Error.invalidModelURL),
 				storeURL: storeURL,
 				loadedStores: loadedStores)
 			
