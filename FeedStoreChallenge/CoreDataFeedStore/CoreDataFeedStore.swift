@@ -39,13 +39,11 @@ public class CoreDataFeedStore: FeedStore {
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
 		perform(in: context) { context in
 			do {
-				if let cache = try context.findOne(CDFeedCache.self) {
-					context.delete(cache)
-					try? context.save()
+				try context.findOne(CDFeedCache.self)
+					.map(context.delete)
+					.map(context.save)
+				
 					completion(nil)
-				} else {
-					completion(nil)
-				}
 			} catch {
 				completion(Self.transformError(error))
 			}
