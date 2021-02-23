@@ -8,7 +8,7 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imageDescription" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>
-        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="url" attributeType="URI"/>
         <relationship name="cache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDFeedCache" inverseName="images" inverseEntity="CDFeedCache"/>
     </entity>
     <elements>
