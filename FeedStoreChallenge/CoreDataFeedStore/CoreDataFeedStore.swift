@@ -37,7 +37,7 @@ public class CoreDataFeedStore: FeedStore {
 	}
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		perform(in: context) { context in
+		perform { context in
 			do {
 				try context.findOne(CDFeedCache.self)
 					.map(context.delete)
@@ -55,7 +55,7 @@ public class CoreDataFeedStore: FeedStore {
 		timestamp: Date,
 		completion: @escaping InsertionCompletion
 	) {
-		perform(in: context) { context in
+		perform { context in
 			let toCDFeedImage = CDFeedImage.fromLocalFeed(in: context)
 			
 			do {
@@ -75,7 +75,7 @@ public class CoreDataFeedStore: FeedStore {
 	}
 	
 	public func retrieve(completion: @escaping RetrievalCompletion) {
-		perform(in: context) { context in
+		perform { context in
 			do {
 				if let cache = try context.findOne(CDFeedCache.self),
 				   let images = cache.images {
@@ -107,10 +107,10 @@ public class CoreDataFeedStore: FeedStore {
 		}
 	}
 	
-	func perform(
-		in context: NSManagedObjectContext,
+	private func perform(
 		_ block: @escaping (NSManagedObjectContext) -> Void
 	) {
+		let context = self.context
 		context.perform { block(context) }
 	}
 }
