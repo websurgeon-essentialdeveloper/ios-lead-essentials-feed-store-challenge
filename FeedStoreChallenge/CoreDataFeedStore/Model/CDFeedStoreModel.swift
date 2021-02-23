@@ -15,7 +15,7 @@ public enum CDFeedStoreModel {
 			.url(forResource: name, withExtension: modelExtension)
 	}
 	
-	public static func storeURL() -> URL? {
+	public static func storeURL() -> URL {
 		return NSPersistentContainer
 			.defaultDirectoryURL()
 			.appendingPathComponent(name)

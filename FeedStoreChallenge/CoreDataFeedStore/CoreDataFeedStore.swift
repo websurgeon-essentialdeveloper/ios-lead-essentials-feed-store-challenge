@@ -14,7 +14,6 @@ public class CoreDataFeedStore: FeedStore {
 	
 	public enum Error: Swift.Error {
 		case invalidModelURL
-		case invalidStoreURL
 		case modelNotFound(URL)
 		case loadPersistentStoresFailed([NSPersistentContainer.StoreLoadFailure])
 		case unhandled(Swift.Error?)
@@ -23,14 +22,14 @@ public class CoreDataFeedStore: FeedStore {
 	public init(
 		name: String = Model.name,
 		modelURL: URL? = Model.modelURL(),
-		storeURL: URL? = Model.storeURL(),
+		storeURL: URL = Model.storeURL(),
 		loadedStores: LoadedStoresCompletion? = nil
 	) throws {
 		do {
 			container = try NSPersistentContainer.loadContainer(
 				name: name,
 				modelURL: try modelURL.unwrap(throw: Error.invalidModelURL),
-				storeURL: try storeURL.unwrap(throw: Error.invalidStoreURL),
+				storeURL: storeURL,
 				loadedStores: loadedStores)
 			
 			context = container.newBackgroundContext()
