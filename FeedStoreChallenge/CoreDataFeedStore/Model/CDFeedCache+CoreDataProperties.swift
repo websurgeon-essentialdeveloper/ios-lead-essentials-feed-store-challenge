@@ -8,5 +8,5 @@ import CoreData
 
 extension CDFeedCache {
     @NSManaged public var timestamp: Date
-    @NSManaged public var images: NSOrderedSet?
+    @NSManaged public var images: NSOrderedSet
 }

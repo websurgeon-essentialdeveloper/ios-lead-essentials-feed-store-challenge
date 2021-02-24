@@ -77,9 +77,8 @@ public class CoreDataFeedStore: FeedStore {
 	public func retrieve(completion: @escaping RetrievalCompletion) {
 		perform { context in
 			do {
-				if let cache = try context.findOne(CDFeedCache.self),
-				   let images = cache.images {
-					let feed = images
+				if let cache = try context.findOne(CDFeedCache.self) {
+					let feed = cache.images
 						.compactMap { ($0 as? CDFeedImage)?.toLocalFeedImage() }
 					
 					completion(.found(feed: feed, timestamp: cache.timestamp))
