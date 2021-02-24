@@ -6,7 +6,7 @@ import Foundation
 import CoreData
 
 extension CDFeedImage {
-	func toLocalFeedImage() -> LocalFeedImage? {
+	func toLocalFeedImage() -> LocalFeedImage {
 		return LocalFeedImage(
 			id: id,
 			description: imageDescription,
